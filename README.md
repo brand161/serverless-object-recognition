@@ -24,43 +24,45 @@ A comparable service on AWS, Rekognition, would be an estimated cost of $100 for
 This means we can see a 98% decrease in cost for simple object detection analysis.
 
 ## Sample responses
+![My boys](./images/people_test.jpg)
+
 ```
 
 
 curl --location --request POST 'https://$api-id.execute-api.$region.amazonaws.com/api/detectObjects' \
 --header 'Content-Type: image/jpeg' \
---data-binary '@/some/file.jpeg'
+--data-binary '@/some/path/people_test.jpeg'
 
 {
     "Results": [
         {
             "Object": "person",
-            "Confidence": 0.9470769166946411,
+            "Confidence": 0.8966946005821228,
             "BoundingBoxes": {
-                "x": 29,
-                "y": 297,
-                "w": 365,
-                "h": 512
+                "x": 1231,
+                "y": 356,
+                "w": 664,
+                "h": 681
+            }
+        },
+        {
+            "Object": "tie",
+            "Confidence": 0.8887098431587219,
+            "BoundingBoxes": {
+                "x": 1564,
+                "y": 745,
+                "w": 64,
+                "h": 118
             }
         },
         {
             "Object": "person",
-            "Confidence": 0.5962204933166504,
+            "Confidence": 0.3026312291622162,
             "BoundingBoxes": {
-                "x": 715,
-                "y": 197,
-                "w": 300,
-                "h": 649
-            }
-        },
-        {
-            "Object": "person",
-            "Confidence": 0.5856237411499023,
-            "BoundingBoxes": {
-                "x": 343,
-                "y": 168,
-                "w": 253,
-                "h": 704
+                "x": 127,
+                "y": 17,
+                "w": 811,
+                "h": 1054
             }
         }
     ]
