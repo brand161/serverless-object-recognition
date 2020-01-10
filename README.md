@@ -25,6 +25,12 @@ This means we can see a 98% decrease in cost for simple object detection analysi
 
 ## Sample responses
 ```
+
+
+curl --location --request POST 'https://$api-id.execute-api.$region.amazonaws.com/api/detectObjects' \
+--header 'Content-Type: image/jpeg' \
+--data-binary '@/some/file.jpeg'
+
 {
     "Results": [
         {
