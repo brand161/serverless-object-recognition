@@ -4,11 +4,11 @@
 
 ### About
 
-This project uses AWS Lambda and AWS API Gateway in conjunction with OpenCV powered by a (tiny) version of the YoloV3 Object
+This project uses AWS Lambda and AWS API Gateway in conjunction with OpenCV powered by a (tiny) version of the [YoloV3](https://pjreddie.com/darknet/yolo/) Object
 detection system trained on the coco dataset. This architecture enables an event driven, serverless, self-contained 
 object detection API that is extremely fast, accurate, and most importantly, nearly free!
 
-The Chalice Microframework is used for turning the Lambda and API Gateway configuration into Flask style python code.
+The [Chalice Microframework](https://chalice.readthedocs.io/en/latest/) is used for turning the Lambda and API Gateway configuration into Flask style python code.
 
 Currently the API only supports images (png/jpeg).
 
@@ -24,7 +24,7 @@ A comparable service on AWS, Rekognition, would be an estimated cost of $100 for
 This means we can see a 98% decrease in cost for simple object detection analysis.
 
 ## Sample responses
-
+```
 {
     "Results": [
         {
@@ -59,7 +59,7 @@ This means we can see a 98% decrease in cost for simple object detection analysi
         }
     ]
 }
-
+```
 ### Deployment
 
 TBD
