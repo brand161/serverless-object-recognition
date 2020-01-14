@@ -1,0 +1,87 @@
+# Lab 1 - Get your environment setup!
+
+
+# Launch workshop cloudformation stack
+
+[Click me!](https://console.aws.amazon.com/cloudformation/home?region=us-west-2#/stacks/new?stackName=rt-workshop&templateURL=https://s3-us-west-2.amazonaws.com/www.roseburgtech.org/workshops/workshop_template.yaml)
+
+- Wait for the stack to show "Create Complete" before progressing onto the next step
+
+# Open the Cloud9 IDE
+
+## Once the workshop stack has been successfully created, follow the steps below to access the hosted project IDE
+
+1. Navigate to the services tab in the AWS navigation bar
+2. Search for Cloud9 and select the link for Cloud9
+3. From the Cloud9 Console, click open IDE on the created environment
+
+- On the initial opening of the IDE, some first time automation needs to run. Wait for it to complete before moving on. 
+
+# Initialize the workshop
+
+## Once the initial automation completes, you should have a shell ready for use. From the current working directory, run:
+
+`. ./rt-workshop/workshop/init_workshop.sh`
+
+- Again, this needs some time to run. Wait for it to complete before progressing.
+
+# Turn off the managed C9 Credentials
+
+## For the workshop to run correctly, we need to disable to default credentials that Cloud 9 provides us:
+
+1. In the Cloud9 Environment, select 'AWS Cloud 9' in the top left corner, then 'preferences'
+2. Scroll down to AWS Settings, then select 'credentials'
+3. Click the radio button for 'AWS Managed temporary credentials' and ensure it is not checked (should be grey, not green)
+
+# Lab 2 - Deploy the API!
+
+## Now that our environment is configured properly, we can deploy the API and test our API
+
+- From the CLI, run:
+`chalice deploy`
+
+- This will create our serverless lambda function, REST API, and associated security roles
+- Make note of the REST API URL and save it somewhere handy, you'll use this later
+
+## Test the API
+
+- From the current working directory, run the following command, making sure to replace the api with what was returned in the last step:
+
+`curl --location --request POST '$your-api-url/detectObjects' --header 'Content-Type: image/jpeg' --data-binary '@./images/people_test.jpg'`
+
+# Lab 3 - Add support to API for returning an overlayed image
+
+- From the navigation tree in the left pane, open up the app.py file 
+- Parse the code and find the sections that have comments saying 'Uncomment' or 'Comment' and do as it says
+- Save the updated code and redeploy the API with:
+`chalice deploy`
+
+## Test the new functionality in the API, again making sure you replace the api with yours
+
+`curl --location --request POST 'https://$your-api-url/detectObjects?returnImage=true' --header 'Content-Type: image/jpeg' --data-binary '@./images/people_test.jpg'`
+
+# Lab 4 - Deploy a webapp to interact with the API
+
+## Modify the webapp code to query your API endpoint
+
+- Open the app.js file under the web directory
+- Replace the URL variable with your REST API URL in the XMLHTTPRequest
+
+## Deploy the webapp
+
+1. `cd web` 
+
+2. `aws s3 sync . s3://$BUCKET_NAME`
+
+# Grab your webapp URL from Cloudformation
+- In a new tab, navigate to the cloudformation console
+- Find the stack you initally created and click on it
+- Select the 'Outputs' tab
+- Grab the URL from the WebsiteURL Value and paste it into a new tab
+
+
+# Test the webapp
+
+- Upload an image from your computer using the file browser and explore the results
+
+# Done!

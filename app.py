@@ -48,7 +48,7 @@ def detect_objects():
     query_params = app.current_request.query_params
     return_image = False
 
-    # Uncomment this code for lab 2:
+    # Uncomment this code below: 
     # if not query_params:
     #     return_image = False
     # else:
@@ -143,25 +143,24 @@ def detect_objects():
             results.append(result)
 
         if return_image is True:
-            # Comment this out  for lab 2:
+            # Comment this code below out  for lab 3:
             return {"Results": "Not implemented"}
 
-            # Uncomment this code for lab 2:
 
             # Draw a bounding boxes and label text on image
+            
+            # Uncomment this code below:
             # color = [int(c) for c in label_colors[class_ids[i]]]
             # cv2.rectangle(image, (x, y), (x + w, y + h), color, 2)
             # text = "{}: {:.4f}".format(labels[class_ids[i]], confidences[i])
             # cv2.putText(image, text, (x, y - 5),
             #             cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
-
             # encoded_image = base64.b64encode(
             #     cv2.imencode('.jpg', image)[1]).decode()
             # response = {"image": encoded_image}
 
             # json_respone = json.dumps(
             #     response, ensure_ascii=False, indent=4)
-
             #return json_respone
 
         else:
