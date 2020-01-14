@@ -73,15 +73,37 @@
 
 2. `aws s3 sync . s3://$BUCKET_NAME`
 
-# Grab your webapp URL from Cloudformation
+## Grab your webapp URL from Cloudformation
 - In a new tab, navigate to the cloudformation console
 - Find the stack you initally created and click on it
 - Select the 'Outputs' tab
 - Grab the URL from the WebsiteURL Value and paste it into a new tab
 
 
-# Test the webapp
+## Test the webapp
 
 - Upload an image from your computer using the file browser and explore the results
+
+
+# Cleanup
+
+- From the shell, run:
+
+1. `cd ..`
+
+2. `chalice delete`
+
+- Then run the following commands:
+
+
+`aws s3api delete-object --bucket $BUCKET_NAME --key app.js`
+
+`aws s3api delete-object --bucket $BUCKET_NAME --key index.html`
+
+- Finally, navigate back to the Cloudformation console and delete the workshop stack
+
+1. Click on the workshop stack
+2. Click the 'Delete' button in the right viewing pane
+3. Wait for the stack to successfully delete
 
 # Done!
