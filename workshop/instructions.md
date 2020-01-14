@@ -3,6 +3,8 @@
 
 # Launch workshop cloudformation stack
 
+*hint - open in new tab*
+
 [Click me!](https://console.aws.amazon.com/cloudformation/home?region=us-west-2#/stacks/new?stackName=rt-workshop&templateURL=https://s3-us-west-2.amazonaws.com/www.roseburgtech.org/workshops/workshop_template.yaml)
 
 - Wait for the stack to show "Create Complete" before progressing onto the next step
@@ -11,10 +13,18 @@
 
 ## Once the workshop stack has been successfully created, follow the steps below to access the hosted project IDE
 
+- You can access the Cloud9 Console using the shortcut below:
+
+*hint - open in new tab*
+
+[Cloud9 Shortcut](https://us-west-2.console.aws.amazon.com/cloud9/home?region=us-west-2)
+
+- Or you can follow these steps:
+
 1. Navigate to the services tab in the AWS navigation bar
 2. Search for Cloud9 and select the link for Cloud9
-3. From the Cloud9 Console, click open IDE on the created environment
 
+- Once you get to the Cloud9 Console, click open IDE on the created environment
 - On the initial opening of the IDE, some first time automation needs to run. Wait for it to complete before moving on. 
 
 # Initialize the workshop
@@ -74,7 +84,7 @@
 2. `aws s3 sync . s3://$BUCKET_NAME`
 
 ## Grab your webapp URL from Cloudformation
-- In a new tab, navigate to the cloudformation console
+- Open the [cloudformation console](https://us-west-2.console.aws.amazon.com/cloudformation/home?region=us-west-2) in a new tab
 - Find the stack you initally created and click on it
 - Select the 'Outputs' tab
 - Grab the URL from the WebsiteURL Value and paste it into a new tab
