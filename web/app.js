@@ -11,6 +11,8 @@ const allowedExtentions = ['jpg', 'jpeg', 'png']
 $(document).ready(function () {
     $('#img-upload-form').submit(async function (e) {
         e.preventDefault();
+        $('#returnedImg').attr("src", '')
+        $('#returnedJson').text('')
         var img = $('#customFile')[0].files[0]
         var arr_buff = await toBase64(img)
         
@@ -52,8 +54,10 @@ $(document).ready(function () {
                 }
             }
         });
+        
+        var replaceMe = "https://$$$$$$$.execute-api.us-west-2.amazonaws.com/api/"
 
-        var url = "https://$$$$$$$.execute-api.us-west-2.amazonaws.com/api/detectObjects?returnImage=" + returnImage
+        var url = replaceMe + "detectObjects?returnImage=" + returnImage
 
         xhr.open("POST", url);
         if (type == 'png') {

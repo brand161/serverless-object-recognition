@@ -1,7 +1,7 @@
 # Lab 1 - Get your environment setup!
 
 
-# Launch workshop cloudformation stack
+## Launch workshop cloudformation stack
 
 *hint - open in new tab*
 
@@ -9,9 +9,9 @@
 
 - Wait for the stack to show "Create Complete" before progressing onto the next step
 
-# Open the Cloud9 IDE
+## Open the Cloud9 IDE
 
-## Once the workshop stack has been successfully created, follow the steps below to access the hosted project IDE
+### Once the workshop stack has been successfully created, follow the steps below to access the hosted project IDE
 
 - You can access the Cloud9 Console using the shortcut below:
 
@@ -27,17 +27,17 @@
 - Once you get to the Cloud9 Console, click open IDE on the created environment
 - On the initial opening of the IDE, some first time automation needs to run. Wait for it to complete before moving on. 
 
-# Initialize the workshop
+## Initialize the workshop
 
-## Once the initial automation completes, you should have a shell ready for use. From the current working directory, run:
+### Once the initial automation completes, you should have a shell ready for use. From the current working directory, run:
 
 `. ./rt-workshop/workshop/init_workshop.sh`
 
 - Again, this needs some time to run. Wait for it to complete before progressing.
 
-# Turn off the managed C9 Credentials
+## Turn off the managed C9 Credentials
 
-## For the workshop to run correctly, we need to disable to default credentials that Cloud 9 provides us:
+### For the workshop to run correctly, we need to disable to default credentials that Cloud 9 provides us:
 
 1. In the Cloud9 Environment, select 'AWS Cloud 9' in the top left corner, then 'preferences'
 2. Scroll down to AWS Settings, then select 'credentials'
@@ -51,13 +51,15 @@
 `chalice deploy`
 
 - This will create our serverless lambda function, REST API, and associated security roles
-- Make note of the REST API URL and save it somewhere handy, you'll use this later
+- Run the command below, but replace the API Endpoint with the URL that was returned from the deploy command
+
+`export MY-API-URL='https://your-api-endpoint/api/'`
 
 ## Test the API
 
 - From the current working directory, run the following command, making sure to replace the api with what was returned in the last step:
 
-`curl --location --request POST '$your-api-url/detectObjects' --header 'Content-Type: image/jpeg' --data-binary '@./images/people_test.jpg'`
+`curl --location --request POST '$MY-API-URL/detectObjects' --header 'Content-Type: image/jpeg' --data-binary '@./images/people_test.jpg'`
 
 # Lab 3 - Add support to API for returning an overlayed image
 
@@ -68,14 +70,14 @@
 
 ## Test the new functionality in the API, again making sure you replace the api with yours
 
-`curl --location --request POST 'https://$your-api-url/detectObjects?returnImage=true' --header 'Content-Type: image/jpeg' --data-binary '@./images/people_test.jpg'`
+`curl --location --request POST '$MY-API-URL/detectObjects?returnImage=true' --header 'Content-Type: image/jpeg' --data-binary '@./images/people_test.jpg'`
 
 # Lab 4 - Deploy a webapp to interact with the API
 
 ## Modify the webapp code to query your API endpoint
 
 - Open the app.js file under the web directory
-- Replace the URL variable with your REST API URL in the XMLHTTPRequest
+- Replace the 'replaceMe' variable with your REST API URL (`echo $MY-API-URL`) in the XMLHTTPRequest
 
 ## Deploy the webapp
 
