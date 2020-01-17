@@ -27,6 +27,8 @@
 - Once you get to the Cloud9 Console, click open IDE on the created environment
 - On the initial opening of the IDE, some first time automation needs to run. Wait for it to complete before moving on. 
 
+*if you dont see 'Open IDE, expand the menu in the top left and click on 'Environments'*
+
 ## Initialize the workshop
 
 ### Once the initial automation completes, you should have a shell ready for use. From the current working directory, run:
@@ -53,13 +55,13 @@
 - This will create our serverless lambda function, REST API, and associated security roles
 - Run the command below, but replace the API Endpoint with the URL that was returned from the deploy command
 
-`export MY-API-URL='https://your-api-endpoint/api/'`
+`export MY_API_URL='https://your-api-endpoint/api/'`
 
 ## Test the API
 
 - From the current working directory, run the following command, making sure to replace the api with what was returned in the last step:
 
-`curl --location --request POST '$MY-API-URL/detectObjects' --header 'Content-Type: image/jpeg' --data-binary '@./images/people_test.jpg'`
+`curl --location --request POST $MY_API_URL/detectObjects --header 'Content-Type: image/jpeg' --data-binary '@./images/people_test.jpg'`
 
 # Lab 3 - Add support to API for returning an overlayed image
 
@@ -70,14 +72,14 @@
 
 ## Test the new functionality in the API, again making sure you replace the api with yours
 
-`curl --location --request POST '$MY-API-URL/detectObjects?returnImage=true' --header 'Content-Type: image/jpeg' --data-binary '@./images/people_test.jpg'`
+`curl --location --request POST $MY_API_URL/detectObjects?returnImage=true --header 'Content-Type: image/jpeg' --data-binary '@./images/people_test.jpg'`
 
 # Lab 4 - Deploy a webapp to interact with the API
 
 ## Modify the webapp code to query your API endpoint
 
 - Open the app.js file under the web directory
-- Replace the 'replaceMe' variable with your REST API URL (`echo $MY-API-URL`) in the XMLHTTPRequest
+- Replace the 'replaceMe' variable with your REST API URL (`echo $MY_API_URL`) in the XMLHTTPRequest
 
 ## Deploy the webapp
 
